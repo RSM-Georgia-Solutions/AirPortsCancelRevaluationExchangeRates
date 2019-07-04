@@ -4,3 +4,4 @@ d:\users\nkurdadze\documents\visual studio 2015\Projects\AirPortsCancelRevaluati
 d:\users\nkurdadze\documents\visual studio 2015\Projects\AirPortsCancelRevaluationExchangeRates\AirPortsCancelRevaluationExchangeRates\bin\Debug\SAPBusinessOneSDK.dll
 d:\users\nkurdadze\documents\visual studio 2015\Projects\AirPortsCancelRevaluationExchangeRates\AirPortsCancelRevaluationExchangeRates\obj\Debug\AirPortsCancelRevaluationExchangeRates.exe
 d:\users\nkurdadze\documents\visual studio 2015\Projects\AirPortsCancelRevaluationExchangeRates\AirPortsCancelRevaluationExchangeRates\obj\Debug\AirPortsCancelRevaluationExchangeRates.pdb
+d:\users\nkurdadze\documents\visual studio 2015\Projects\AirPortsCancelRevaluationExchangeRates\AirPortsCancelRevaluationExchangeRates\obj\Debug\AirPortsCancelRevaluationExchangeRates.csprojResolveAssemblyReference.cache

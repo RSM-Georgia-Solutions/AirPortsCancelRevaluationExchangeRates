@@ -70,7 +70,7 @@ namespace AirPortsCancelRevaluationExchangeRates
                 (Recordset)DiManager.Company.GetBusinessObject(BoObjectTypes
                     .BoRecordset);
             string query =
-                $"select TransId from JDT1 where TransId in (SELECT TransId FROM JDT1 WHERE RefDate IN(SELECT   MAX(RefDate) FROM     JDT1 GROUP BY MONTH(RefDate), YEAR(RefDate)) AND(Account = '8180' OR Account = '8280')  AND(ContraAct in (SELECT CardCode FROM OCRD)) AND(RefDate >= '{DateTime.ParseExact(EditText0.Value, "yyyyMMdd", CultureInfo.InvariantCulture):s}' AND RefDate <= '{DateTime.ParseExact(EditText1.Value, "yyyyMMdd", CultureInfo.InvariantCulture):s}')) AND Ref3Line  LIKE N'%RC%' OR Ref3Line  LIKE N'%БО%' OR Ref3Line LIKE N'%ПР%' OR Ref3Line LIKE N'%РС%'";
+                $"select distinct TransId from JDT1 where TransId in (SELECT TransId FROM JDT1 WHERE RefDate IN(SELECT   MAX(RefDate) FROM     JDT1 GROUP BY MONTH(RefDate), YEAR(RefDate)) AND(Account = '8180' OR Account = '8280')  AND(ContraAct in (SELECT CardCode FROM OCRD)) AND(RefDate >= '{DateTime.ParseExact(EditText0.Value, "yyyyMMdd", CultureInfo.InvariantCulture):s}' AND RefDate <= '{DateTime.ParseExact(EditText1.Value, "yyyyMMdd", CultureInfo.InvariantCulture):s}')) AND (Ref3Line  LIKE N'%RC%' OR Ref3Line  LIKE N'%БО%' OR Ref3Line LIKE N'%ПР%' OR Ref3Line LIKE N'%РС%')";
             recSet.DoQuery(DiManager.QueryHanaTransalte(query));
 
             while (!recSet.EoF)
@@ -94,10 +94,8 @@ namespace AirPortsCancelRevaluationExchangeRates
                 int res;
 
                 if (isDpm)
-                {
-                    journalEntry.UseAutoStorno = BoYesNoEnum.tYES;
-                    journalEntry.StornoDate = journalEntry.TaxDate;
-                    res = journalEntry.Update();
+                { 
+                    res = journalEntry.Cancel();
                 }
                 else
                 {
@@ -114,6 +112,7 @@ namespace AirPortsCancelRevaluationExchangeRates
                     {
                         DiManager.Company.EndTransaction(BoWfTransOpt.wf_RollBack);
                     }
+                    return;
                 }
                 recSet.MoveNext();
             }
