@@ -105,21 +105,66 @@ namespace AirPortsCancelRevaluationExchangeRates
                     (JournalEntries)DiManager.Company.GetBusinessObject(BoObjectTypes.oJournalEntries);
                 journalEntry.GetByKey(transId);
 
-                bool isDpm = false;
+                bool shouldBeCanceled = false;
 
                 for (int i = 0; i < journalEntry.Lines.Count; i++)
                 {
                     journalEntry.Lines.SetCurrentLine(i);
-                    if (journalEntry.Lines.AdditionalReference.Contains("РС"))
+                    string coment = journalEntry.Lines.AdditionalReference;
+
+                    int dpmCount = 0;
+                    int otherCount = 0;
+
+                    if (coment.Contains("РС") || coment.Contains("RC"))
                     {
-                        isDpm = true;
+                        var docentry = coment.Substring(coment.IndexOf("РС", StringComparison.Ordinal));
+                        Payments payment = (Payments)DiManager.Company.GetBusinessObject(BoObjectTypes.oIncomingPayments);
+                        payment.GetByKey(int.Parse(docentry));
+
+                        for (int j = 0; j < payment.Invoices.Count; j++)
+                        {
+                            payment.Invoices.SetCurrentLine(i);
+                            if (payment.Invoices.InvoiceType == BoRcptInvTypes.it_DownPayment)
+                            {
+                                dpmCount++;
+                            }
+                            else
+                            {
+                                otherCount++;
+                            }
+                        }
                     }
+
+                    else if (coment.Contains("PS") || coment.Contains("ИП"))
+                    {
+                        var docentry = coment.Substring(coment.IndexOf("PS", StringComparison.Ordinal));
+                        Payments payment = (Payments)DiManager.Company.GetBusinessObject(BoObjectTypes.oVendorPayments);
+                        payment.GetByKey(int.Parse(docentry));
+                        for (int j = 0; j < payment.Invoices.Count; j++)
+                        {
+                            payment.Invoices.SetCurrentLine(i);
+                            if (payment.Invoices.InvoiceType == BoRcptInvTypes.it_PurchaseDownPayment)
+                            {
+                                dpmCount++;
+                            }
+                            else
+                            {
+                                otherCount++;
+                            }
+                        }
+                    }
+
+                    if (dpmCount > 0 && otherCount <1)
+                    {
+                        shouldBeCanceled = true;
+                    }
+
                 }
 
                 int res;
 
-                if (isDpm)
-                { 
+                if (shouldBeCanceled)
+                {
                     res = journalEntry.Cancel();
                 }
                 else
