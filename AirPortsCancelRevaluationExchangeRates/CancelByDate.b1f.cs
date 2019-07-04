@@ -153,7 +153,25 @@ namespace AirPortsCancelRevaluationExchangeRates
                 (Recordset)DiManager.Company.GetBusinessObject(BoObjectTypes
                     .BoRecordset);
             string query =
-                $"select distinct TransId from JDT1 where TransId in (SELECT TransId FROM JDT1 WHERE RefDate IN(SELECT   MAX(RefDate) FROM     JDT1 GROUP BY MONTH(RefDate), YEAR(RefDate)) AND(Account = '8180' OR Account = '8280')  AND(ContraAct in (SELECT CardCode FROM OCRD where validfor = 'Y')) AND(RefDate >= '{DateTime.ParseExact(EditText0.Value, "yyyyMMdd", CultureInfo.InvariantCulture):s}' AND RefDate <= '{DateTime.ParseExact(EditText1.Value, "yyyyMMdd", CultureInfo.InvariantCulture):s}')) AND (Ref3Line  LIKE N'%RC%' OR Ref3Line  LIKE N'%БО%' OR Ref3Line LIKE N'%ПР%' OR Ref3Line LIKE N'%РС%')";
+                $@"select distinct TransId from JDT1 where TransId in (SELECT TransId FROM JDT1 WHERE RefDate IN(SELECT   MAX(RefDate) FROM     JDT1 GROUP BY MONTH(RefDate), YEAR(RefDate)) AND(Account = '8180' OR Account = '8280')  AND(ContraAct in (SELECT CardCode FROM OCRD where validfor = 'Y')) AND(RefDate >= '{DateTime.ParseExact(EditText0.Value, "yyyyMMdd", CultureInfo.InvariantCulture):s}' AND RefDate <= '{DateTime.ParseExact(EditText1.Value, "yyyyMMdd", CultureInfo.InvariantCulture):s}')) AND (Ref3Line  LIKE N'%RC%' OR Ref3Line LIKE N'%IN%'
+            OR Ref3Line LIKE N'%PU%'
+            OR Ref3Line LIKE N'%PS%'
+            OR Ref3Line LIKE N'%JE%'
+            OR Ref3Line LIKE N'%CN%'
+            OR Ref3Line LIKE N'%CS%'
+            OR Ref3Line LIKE N'%PC%'
+            OR Ref3Line LIKE N'%DT%'
+            OR Ref3Line LIKE N'%OB%'
+            OR Ref3Line LIKE N'%ПР%'
+            OR Ref3Line LIKE N'%ЗА%'
+            OR Ref3Line LIKE N'%ИП%'
+            OR Ref3Line LIKE N'%РС%'
+            OR Ref3Line LIKE N'%БО%'
+            OR Ref3Line LIKE N'%КП%'
+            OR Ref3Line LIKE N'%КР%'
+            OR Ref3Line LIKE N'%КЗ%'
+            OR Ref3Line LIKE N'%СЧ%'
+            OR Ref3Line LIKE N'%НС%')";
             recSet.DoQuery(DiManager.QueryHanaTransalte(query));
             int count = 0;
             int totalCont = recSet.RecordCount;
