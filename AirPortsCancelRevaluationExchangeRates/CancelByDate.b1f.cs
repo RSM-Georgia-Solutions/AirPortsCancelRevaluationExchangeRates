@@ -30,6 +30,8 @@ namespace AirPortsCancelRevaluationExchangeRates
             this.Button0.PressedAfter += new SAPbouiCOM._IButtonEvents_PressedAfterEventHandler(this.Button0_PressedAfter);
             this.Button1 = ((SAPbouiCOM.Button)(this.GetItem("Item_5").Specific));
             this.Button1.PressedAfter += new SAPbouiCOM._IButtonEvents_PressedAfterEventHandler(this.Button1_PressedAfter);
+            this.StaticText2 = ((SAPbouiCOM.StaticText)(this.GetItem("Item_6").Specific));
+            this.EditText2 = ((SAPbouiCOM.EditText)(this.GetItem("Item_7").Specific));
             this.OnCustomInitialize();
 
         }
@@ -45,7 +47,7 @@ namespace AirPortsCancelRevaluationExchangeRates
 
         private void OnCustomInitialize()
         {
-
+            Button1.Item.Visible = false;
         }
 
         private SAPbouiCOM.EditText EditText0;
@@ -61,7 +63,7 @@ namespace AirPortsCancelRevaluationExchangeRates
                 DiManager.Company.StartTransaction();
             }
 
-            if (string.IsNullOrWhiteSpace(EditText0.Value) || string.IsNullOrWhiteSpace(EditText0.Value))
+            if (string.IsNullOrWhiteSpace(EditText0.Value) || string.IsNullOrWhiteSpace(EditText1.Value) || string.IsNullOrWhiteSpace(EditText2.Value))
             {
                 Application.SBO_Application.SetStatusBarMessage("შეავსეთ თარიღები",
                     BoMessageTime.bmt_Short, true);
@@ -105,7 +107,8 @@ namespace AirPortsCancelRevaluationExchangeRates
                 else
                 {
                     journalEntry.UseAutoStorno = BoYesNoEnum.tYES;
-                    journalEntry.StornoDate = new DateTime(2019, 01, 01);
+                    journalEntry.StornoDate =
+                        DateTime.ParseExact(EditText2.Value, "yyyyMMdd", CultureInfo.InvariantCulture);
                     res = journalEntry.Update();
                 }
 
@@ -121,7 +124,7 @@ namespace AirPortsCancelRevaluationExchangeRates
                 }
                 recSet.MoveNext();
                 count++;
-                Application.SBO_Application.StatusBar.SetSystemMessage($"{count} Out Of {totalCont}", BoMessageTime.bmt_Short, BoStatusBarMessageType.smt_None);
+                Application.SBO_Application.StatusBar.SetSystemMessage($"{count} Out Of {totalCont}", BoMessageTime.bmt_Short, BoStatusBarMessageType.smt_Success);
             }
             if (DiManager.Company.InTransaction)
             {
@@ -197,12 +200,15 @@ namespace AirPortsCancelRevaluationExchangeRates
                 }
                 recSet.MoveNext();
                 count++;
-                Application.SBO_Application.StatusBar.SetSystemMessage($"{count} Out Of {totalCont}", BoMessageTime.bmt_Short, BoStatusBarMessageType.smt_None);
+                Application.SBO_Application.StatusBar.SetSystemMessage($"{count} Out Of {totalCont}", BoMessageTime.bmt_Short, BoStatusBarMessageType.smt_Success);
             }
             if (DiManager.Company.InTransaction)
             {
                 DiManager.Company.EndTransaction(BoWfTransOpt.wf_Commit);
             }
         }
+
+        private StaticText StaticText2;
+        private EditText EditText2;
     }
 }
