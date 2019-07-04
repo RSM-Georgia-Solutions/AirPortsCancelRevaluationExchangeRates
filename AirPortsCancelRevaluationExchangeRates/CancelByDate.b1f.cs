@@ -74,7 +74,7 @@ namespace AirPortsCancelRevaluationExchangeRates
                 (Recordset)DiManager.Company.GetBusinessObject(BoObjectTypes
                     .BoRecordset);
             string query =
-                $"select distinct JDT1.TransId from JDT1 where JDT1.TransId in (SELECT JDT1.TransId FROM JDT1 WHERE RefDate IN(SELECT   MAX(RefDate) FROM  JDT1 JOIN OJDT on JDT1.TransId = OJDT.TransId GROUP BY MONTH(RefDate), YEAR(RefDate))  AND (autostorno = 'N') AND(Account = '8180' OR Account = '8280')  AND(ContraAct in (SELECT CardCode FROM OCRD)) AND(RefDate >= '{DateTime.ParseExact(EditText0.Value, "yyyyMMdd", CultureInfo.InvariantCulture):s}' AND RefDate <= '{DateTime.ParseExact(EditText1.Value, "yyyyMMdd", CultureInfo.InvariantCulture):s}')) AND (Ref3Line  LIKE N'%RC%' OR Ref3Line  LIKE N'%БО%' OR Ref3Line LIKE N'%ПР%' OR Ref3Line LIKE N'%РС%')";
+                $"select distinct JDT1.TransId from JDT1 where JDT1.TransId in (SELECT JDT1.TransId FROM JDT1 WHERE RefDate IN(SELECT   MAX(RefDate) FROM  JDT1 JOIN OJDT on JDT1.TransId = OJDT.TransId GROUP BY MONTH(JDT1.RefDate), YEAR(JDT1.RefDate))  AND (autostorno = 'N')   AND (JDT1.TransId NOT IN (SELECT T0.StornoToTr FROM OJDT T0 where t0.stornototr is not NULL)) AND(Account = '8180' OR Account = '8280')  AND(ContraAct in (SELECT CardCode FROM OCRD)) AND(JDT1.RefDate >= '{DateTime.ParseExact(EditText0.Value, "yyyyMMdd", CultureInfo.InvariantCulture):s}' AND JDT1.RefDate <= '{DateTime.ParseExact(EditText1.Value, "yyyyMMdd", CultureInfo.InvariantCulture):s}')) AND (Ref3Line  LIKE N'%RC%' OR Ref3Line  LIKE N'%БО%' OR Ref3Line LIKE N'%ПР%' OR Ref3Line LIKE N'%РС%')";
             recSet.DoQuery(DiManager.QueryHanaTransalte(query));
 
             int count = 0;
