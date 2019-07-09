@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Text;
 using SAPbobsCOM;
@@ -162,6 +163,13 @@ namespace AirPortsCancelRevaluationExchangeRates
                 }
 
                 int res;
+
+                //string path = $@"C:\Users\blatsabidze\Desktop\Gocha.txt";
+                //if (!File.Exists(path))
+                //{
+                //    File.Create(path);
+                //}
+                //File.AppendAllText(path,$"{journalEntry.Number} : {shouldBeCanceled}");
 
                 if (shouldBeCanceled)
                 {
