@@ -122,7 +122,7 @@ namespace AirPortsCancelRevaluationExchangeRates
                         var x2 = coment.IndexOf("RC");
 
 
-                        var docentry = coment.Substring(coment.IndexOf(x1 == -1 ? "RC" : "РС", StringComparison.Ordinal));
+                        var docentry = coment.Substring(coment.IndexOf(x1 == -1 ? "RC" : "РС", StringComparison.Ordinal) + 3);
                         Payments payment = (Payments)DiManager.Company.GetBusinessObject(BoObjectTypes.oIncomingPayments);
                         payment.GetByKey(int.Parse(docentry));
 
@@ -146,7 +146,7 @@ namespace AirPortsCancelRevaluationExchangeRates
                         var x2 = coment.IndexOf("RC");
 
 
-                        var docentry = coment.Substring(coment.IndexOf(x1 == -1 ? "РС" : "RC", StringComparison.Ordinal));
+                        var docentry = coment.Substring(coment.IndexOf(x1 == -1 ? "РС" : "RC", StringComparison.Ordinal + 3));
                         Payments payment = (Payments)DiManager.Company.GetBusinessObject(BoObjectTypes.oVendorPayments);
                         payment.GetByKey(int.Parse(docentry));
                         for (int j = 0; j < payment.Invoices.Count; j++)
