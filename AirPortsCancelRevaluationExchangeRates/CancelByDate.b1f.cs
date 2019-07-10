@@ -118,9 +118,7 @@ namespace AirPortsCancelRevaluationExchangeRates
 
                     if (coment.Contains("РС") || coment.Contains("RC"))
                     {
-                        var x1 = coment.IndexOf("РС");
-                        var x2 = coment.IndexOf("RC");
-
+                        var x1 = coment.IndexOf("РС", StringComparison.Ordinal); 
 
                         var docentry = coment.Substring(coment.IndexOf(x1 == -1 ? "RC" : "РС", StringComparison.Ordinal) + 3);
                         Payments payment = (Payments)DiManager.Company.GetBusinessObject(BoObjectTypes.oIncomingPayments);
@@ -142,11 +140,11 @@ namespace AirPortsCancelRevaluationExchangeRates
 
                     else if (coment.Contains("PS") || coment.Contains("ИП"))
                     {
-                        var x1 = coment.IndexOf("РС");
-                        var x2 = coment.IndexOf("RC");
+                        var x1 = coment.IndexOf("РС", StringComparison.Ordinal);
+                       
 
 
-                        var docentry = coment.Substring(coment.IndexOf(x1 == -1 ? "РС" : "RC", StringComparison.Ordinal + 3));
+                        var docentry = coment.Substring(coment.IndexOf(x1 == -1 ? "ИП" : "РС", StringComparison.Ordinal + 3));
                         Payments payment = (Payments)DiManager.Company.GetBusinessObject(BoObjectTypes.oVendorPayments);
                         payment.GetByKey(int.Parse(docentry));
                         for (int j = 0; j < payment.Invoices.Count; j++)
