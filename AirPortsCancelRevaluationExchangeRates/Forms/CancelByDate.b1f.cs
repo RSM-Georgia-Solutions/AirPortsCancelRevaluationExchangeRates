@@ -11,7 +11,7 @@ using Application = SAPbouiCOM.Framework.Application;
 
 namespace AirPortsCancelRevaluationExchangeRates
 {
-    [FormAttribute("AirPortsCancelRevaluationExchangeRates.CancelByDate", "CancelByDate.b1f")]
+    [FormAttribute("AirPortsCancelRevaluationExchangeRates.CancelByDate", "Forms/CancelByDate.b1f")]
     class CancelByDate : UserFormBase
     {
         public CancelByDate()
@@ -71,11 +71,15 @@ namespace AirPortsCancelRevaluationExchangeRates
                 return;
             }
 
-            Recordset recSet =
-                (Recordset)DiManager.Company.GetBusinessObject(BoObjectTypes
-                    .BoRecordset);
+            Recordset recSet2 = (Recordset)DiManager.Company.GetBusinessObject(BoObjectTypes.BoRecordset);
+            recSet2.DoQuery(DiManager.QueryHanaTransalte($"Select * From [@RSM_REVAL_SETTINGS]"));
+            string gainAcc = recSet2.Fields.Item("U_GainAccount").ToString();
+            string lossAcc= recSet2.Fields.Item("U_LossAccount").ToString();
+
+            Recordset recSet =(Recordset)DiManager.Company.GetBusinessObject(BoObjectTypes.BoRecordset);
+
             string query =
-                $@"select distinct JDT1.TransId  from JDT1 JOIN OJDT on JDT1.TransId = OJDT.TransId  where JDT1.TransId in (SELECT TransId FROM JDT1 WHERE RefDate IN(SELECT   MAX(RefDate) FROM     JDT1 GROUP BY MONTH(RefDate), YEAR(RefDate)) AND   (JDT1.TransId NOT IN ( SELECT T0.StornoToTr FROM OJDT T0 where t0.stornototr is not NULL) AND StornoToTr is null)  AND(Account = '8180' OR Account = '8280')  AND(ContraAct in (SELECT CardCode FROM OCRD where validfor = 'Y')) AND(RefDate >= '{DateTime.ParseExact(EditText0.Value, "yyyyMMdd", CultureInfo.InvariantCulture):s}' AND RefDate <= '{DateTime.ParseExact(EditText1.Value, "yyyyMMdd", CultureInfo.InvariantCulture):s}')) AND (Ref3Line  LIKE N'%RC%' OR Ref3Line LIKE N'%IN%'
+                $@"select distinct JDT1.TransId  from JDT1 JOIN OJDT on JDT1.TransId = OJDT.TransId  where JDT1.TransId in (SELECT TransId FROM JDT1 WHERE RefDate IN(SELECT   MAX(RefDate) FROM     JDT1 GROUP BY MONTH(RefDate), YEAR(RefDate)) AND   (JDT1.TransId NOT IN ( SELECT T0.StornoToTr FROM OJDT T0 where t0.stornototr is not NULL) AND StornoToTr is null)  AND(Account = '{gainAcc}' OR Account = '{lossAcc}')  AND(ContraAct in (SELECT CardCode FROM OCRD where validfor = 'Y')) AND(RefDate >= '{DateTime.ParseExact(EditText0.Value, "yyyyMMdd", CultureInfo.InvariantCulture):s}' AND RefDate <= '{DateTime.ParseExact(EditText1.Value, "yyyyMMdd", CultureInfo.InvariantCulture):s}')) AND (Ref3Line  LIKE N'%RC%' OR Ref3Line LIKE N'%IN%'
             OR Ref3Line LIKE N'%PU%'
             OR Ref3Line LIKE N'%PS%'
             OR Ref3Line LIKE N'%JE%'
@@ -226,11 +230,15 @@ namespace AirPortsCancelRevaluationExchangeRates
                 return;
             }
 
+            Recordset recSet2 = (Recordset)DiManager.Company.GetBusinessObject(BoObjectTypes.BoRecordset);
+            recSet2.DoQuery(DiManager.QueryHanaTransalte($"Select * From [@RSM_REVAL_SETTINGS]"));
+            string gainAcc = recSet2.Fields.Item("U_GainAccount").ToString();
+            string lossAcc = recSet2.Fields.Item("U_LossAccount").ToString();
             Recordset recSet =
                 (Recordset)DiManager.Company.GetBusinessObject(BoObjectTypes
                     .BoRecordset);
             string query =
-                $@"select distinct JDT1.TransId  from JDT1 JOIN OJDT on JDT1.TransId = OJDT.TransId  where JDT1.TransId in (SELECT TransId FROM JDT1 WHERE RefDate IN(SELECT   MAX(RefDate) FROM     JDT1 GROUP BY MONTH(RefDate), YEAR(RefDate)) AND   (JDT1.TransId NOT IN ( SELECT T0.StornoToTr FROM OJDT T0 where t0.stornototr is not NULL) AND StornoToTr is null)  AND(Account = '8180' OR Account = '8280')  AND(ContraAct in (SELECT CardCode FROM OCRD where validfor = 'Y')) AND(RefDate >= '{DateTime.ParseExact(EditText0.Value, "yyyyMMdd", CultureInfo.InvariantCulture):s}' AND RefDate <= '{DateTime.ParseExact(EditText1.Value, "yyyyMMdd", CultureInfo.InvariantCulture):s}')) AND (Ref3Line  LIKE N'%RC%' OR Ref3Line LIKE N'%IN%'
+                $@"select distinct JDT1.TransId  from JDT1 JOIN OJDT on JDT1.TransId = OJDT.TransId  where JDT1.TransId in (SELECT TransId FROM JDT1 WHERE RefDate IN(SELECT   MAX(RefDate) FROM     JDT1 GROUP BY MONTH(RefDate), YEAR(RefDate)) AND   (JDT1.TransId NOT IN ( SELECT T0.StornoToTr FROM OJDT T0 where t0.stornototr is not NULL) AND StornoToTr is null)  AND(Account = '{gainAcc}' OR Account = '{lossAcc}')  AND(ContraAct in (SELECT CardCode FROM OCRD where validfor = 'Y')) AND(RefDate >= '{DateTime.ParseExact(EditText0.Value, "yyyyMMdd", CultureInfo.InvariantCulture):s}' AND RefDate <= '{DateTime.ParseExact(EditText1.Value, "yyyyMMdd", CultureInfo.InvariantCulture):s}')) AND (Ref3Line  LIKE N'%RC%' OR Ref3Line LIKE N'%IN%'
             OR Ref3Line LIKE N'%PU%'
             OR Ref3Line LIKE N'%PS%'
             OR Ref3Line LIKE N'%JE%'

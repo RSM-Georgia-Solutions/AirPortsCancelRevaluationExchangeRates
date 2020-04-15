@@ -50,22 +50,44 @@
     <Reference Include="SAPBusinessOneSDK" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="CancelByDate.b1f">
+    <None Include="Forms\CancelByDate.b1f">
       <FormCategory>UserForm</FormCategory>
     </None>
     <None Include="Form1.b1f">
       <FormCategory>UserForm</FormCategory>
     </None>
-    <Compile Include="CancelByDate.b1f.cs">
+    <Compile Include="Forms\CancelByDate.b1f.cs">
       <DependentUpon>CancelByDate.b1f</DependentUpon>
     </Compile>
     <Compile Include="DiManager.cs" />
     <Compile Include="Form1.b1f.cs">
       <DependentUpon>Form1.b1f</DependentUpon>
     </Compile>
+    <Compile Include="Initialization\CreateFields.cs" />
+    <Compile Include="Initialization\CreateTables.cs" />
+    <Compile Include="Initialization\Initial.cs" />
+    <Compile Include="Initialization\Initialization.b1f.cs">
+      <DependentUpon>Initialization.b1f</DependentUpon>
+    </Compile>
+    <Compile Include="Initialization\IRunnable.cs" />
+    <Compile Include="Forms\ListOfAccounts.b1f.cs">
+      <DependentUpon>ListOfAccounts.b1f</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Settings.b1f.cs">
+      <DependentUpon>Settings.b1f</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Menu.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <None Include="Initialization\Initialization.b1f">
+      <FormCategory>UserForm</FormCategory>
+    </None>
+    <None Include="Forms\ListOfAccounts.b1f">
+      <FormCategory>UserForm</FormCategory>
+    </None>
+    <None Include="Forms\Settings.b1f">
+      <FormCategory>UserForm</FormCategory>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

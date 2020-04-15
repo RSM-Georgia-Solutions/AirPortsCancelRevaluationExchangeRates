@@ -9,7 +9,7 @@ using Translator;
 
 namespace AirPortsCancelRevaluationExchangeRates
 {
-    class DiManager
+    public class DiManager
     {
         public static Recordset Recordset => recSet.Value;
         public static Company Company => xCompany.Value;

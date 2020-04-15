@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using AirPortsCancelRevaluationExchangeRates.Initialization;
 using SAPbouiCOM.Framework;
 
 namespace AirPortsCancelRevaluationExchangeRates
@@ -19,10 +20,12 @@ namespace AirPortsCancelRevaluationExchangeRates
             oMenuItem = Application.SBO_Application.Menus.Item("43520"); // moudles'
 
             oCreationPackage.Type = SAPbouiCOM.BoMenuType.mt_POPUP;
-            oCreationPackage.UniqueID = "AirPortsCancelRevaluationExchangeRates";
-            oCreationPackage.String = "AirPortsCancelRevaluationExchangeRates";
+            oCreationPackage.UniqueID = "RevaluationExchangeRates";
+            oCreationPackage.String = "RevaluationExchangeRates";
             oCreationPackage.Enabled = true;
             oCreationPackage.Position = -1;
+
+
 
             oMenus = oMenuItem.SubMenus;
 
@@ -39,12 +42,22 @@ namespace AirPortsCancelRevaluationExchangeRates
             try
             {
                 // Get the menu collection of the newly added pop-up item
-                oMenuItem = Application.SBO_Application.Menus.Item("AirPortsCancelRevaluationExchangeRates");
+                oMenuItem = Application.SBO_Application.Menus.Item("RevaluationExchangeRates");
                 oMenus = oMenuItem.SubMenus;
 
                 // Create s sub menu
                 oCreationPackage.Type = SAPbouiCOM.BoMenuType.mt_STRING;
-                oCreationPackage.UniqueID = "AirPortsCancelRevaluationExchangeRates.CancelByDate";
+                oCreationPackage.UniqueID = "RevaluationExchangeRates.Settings";
+                oCreationPackage.String = "Settings";
+                oMenus.AddEx(oCreationPackage);
+                // Create s sub menu
+                oCreationPackage.Type = SAPbouiCOM.BoMenuType.mt_STRING;
+                oCreationPackage.UniqueID = "RevaluationExchangeRates.Initial";
+                oCreationPackage.String = "Initialization";
+                oMenus.AddEx(oCreationPackage);
+                // Create s sub menu
+                oCreationPackage.Type = SAPbouiCOM.BoMenuType.mt_STRING;
+                oCreationPackage.UniqueID = "RevaluationExchangeRates.CancelByDate";
                 oCreationPackage.String = "Reverse";
                 oMenus.AddEx(oCreationPackage);
             }
@@ -60,9 +73,19 @@ namespace AirPortsCancelRevaluationExchangeRates
 
             try
             {
-                if (pVal.BeforeAction && pVal.MenuUID == "AirPortsCancelRevaluationExchangeRates.CancelByDate")
+                if (pVal.BeforeAction && pVal.MenuUID == "RevaluationExchangeRates.CancelByDate")
                 {
                     CancelByDate activeForm = new CancelByDate();
+                    activeForm.Show();
+                }
+                else if (pVal.BeforeAction && pVal.MenuUID == "RevaluationExchangeRates.Initial")
+                {
+                    Initialization.Initialization activeForm = new Initialization.Initialization();
+                    activeForm.Show();
+                }
+                else if (pVal.BeforeAction && pVal.MenuUID == "RevaluationExchangeRates.Settings")
+                {
+                    Settings activeForm = new Settings();
                     activeForm.Show();
                 }
             }
