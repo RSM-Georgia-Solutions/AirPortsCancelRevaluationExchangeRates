@@ -73,8 +73,8 @@ namespace AirPortsCancelRevaluationExchangeRates
 
             Recordset recSet2 = (Recordset)DiManager.Company.GetBusinessObject(BoObjectTypes.BoRecordset);
             recSet2.DoQuery(DiManager.QueryHanaTransalte($"Select * From [@RSM_REVAL_SETTINGS]"));
-            string gainAcc = recSet2.Fields.Item("U_GainAccount").ToString();
-            string lossAcc= recSet2.Fields.Item("U_LossAccount").ToString();
+            string gainAcc = recSet2.Fields.Item("U_GainAccount").Value.ToString();
+            string lossAcc= recSet2.Fields.Item("U_LossAccount").Value.ToString();
 
             Recordset recSet =(Recordset)DiManager.Company.GetBusinessObject(BoObjectTypes.BoRecordset);
 
@@ -204,7 +204,7 @@ namespace AirPortsCancelRevaluationExchangeRates
                     return;
                 }
                 recSet.MoveNext();
-                count++;
+                count++; 
                 Application.SBO_Application.StatusBar.SetSystemMessage($"{count} Out Of {totalCont}", BoMessageTime.bmt_Short, BoStatusBarMessageType.smt_Success);
             }
             if (DiManager.Company.InTransaction)
