@@ -1,0 +1,13 @@
+C:\Users\blatsabidze\Desktop\Source\AirPortsCancelRevaluationExchangeRates\AirPortsCancelRevaluationExchangeRates\bin\Debug\SAPBusinessOneSDK.dll
+C:\Users\blatsabidze\Desktop\Source\AirPortsCancelRevaluationExchangeRates\AirPortsCancelRevaluationExchangeRates\bin\Debug\RatesRevaluation.exe
+C:\Users\blatsabidze\Desktop\Source\AirPortsCancelRevaluationExchangeRates\AirPortsCancelRevaluationExchangeRates\bin\Debug\RatesRevaluation.pdb
+C:\Users\blatsabidze\Desktop\Source\AirPortsCancelRevaluationExchangeRates\AirPortsCancelRevaluationExchangeRates\obj\Debug\RatesRevaluation.exe
+C:\Users\blatsabidze\Desktop\Source\AirPortsCancelRevaluationExchangeRates\AirPortsCancelRevaluationExchangeRates\obj\Debug\RatesRevaluation.pdb
+C:\Users\blatsabidze\Desktop\Source\AirPortsCancelRevaluationExchangeRates\AirPortsCancelRevaluationExchangeRates\bin\Debug\Media\logo.png
+C:\Users\blatsabidze\Desktop\Source\RatesRevaluation\RatesRevaluation\obj\Debug\RatesRevaluation.exe
+C:\Users\blatsabidze\Desktop\Source\RatesRevaluation\RatesRevaluation\obj\Debug\RatesRevaluation.pdb
+C:\Users\blatsabidze\Desktop\Source\RatesRevaluation\RatesRevaluation\bin\Debug\Media\logo.png
+C:\Users\blatsabidze\Desktop\Source\RatesRevaluation\RatesRevaluation\bin\Debug\RatesRevaluation.exe
+C:\Users\blatsabidze\Desktop\Source\RatesRevaluation\RatesRevaluation\bin\Debug\RatesRevaluation.pdb
+C:\Users\blatsabidze\Desktop\Source\RatesRevaluation\RatesRevaluation\bin\Debug\SAPBusinessOneSDK.dll
+C:\Users\blatsabidze\Desktop\Source\RatesRevaluation\RatesRevaluation\obj\Debug\RatesRevaluation.csprojResolveAssemblyReference.cache

@@ -6,9 +6,9 @@ using SAPbobsCOM;
 using SAPbouiCOM;
 using SAPbouiCOM.Framework;
 
-namespace AirPortsCancelRevaluationExchangeRates.Initialization
+namespace RatesRevaluation.Initialization
 {
-    [FormAttribute("AirPortsCancelRevaluationExchangeRates.Initialization.Settings", "Forms/Settings.b1f")]
+    [FormAttribute("RatesRevaluation.Initialization.Settings", "Forms/Settings.b1f")]
     class Settings : UserFormBase
     {
         public Settings()

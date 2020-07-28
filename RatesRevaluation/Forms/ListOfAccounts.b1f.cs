@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using AirPortsCancelRevaluationExchangeRates.Initialization;
+using RatesRevaluation.Initialization;
 using SAPbouiCOM.Framework;
 
-namespace AirPortsCancelRevaluationExchangeRates
+namespace RatesRevaluation
 {
-    [FormAttribute("AirPortsCancelRevaluationExchangeRates.ListOfAccounts", "Forms/ListOfAccounts.b1f")]
+    [FormAttribute("RatesRevaluation.ListOfAccounts", "Forms/ListOfAccounts.b1f")]
     class ListOfAccounts : UserFormBase
     {
         private readonly Settings _exciseParams;

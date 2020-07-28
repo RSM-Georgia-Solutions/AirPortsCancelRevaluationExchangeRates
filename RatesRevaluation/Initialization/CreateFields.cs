@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using SAPbobsCOM;
 
-namespace AirPortsCancelRevaluationExchangeRates.Initialization
+namespace RatesRevaluation.Initialization
 {
     class CreateFields : IRunnable
     {

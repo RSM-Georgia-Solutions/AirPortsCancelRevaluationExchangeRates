@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Translator;
 
-namespace AirPortsCancelRevaluationExchangeRates
+namespace RatesRevaluation
 {
     public class DiManager
     {

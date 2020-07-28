@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using SAPbouiCOM.Framework;
 
-namespace AirPortsCancelRevaluationExchangeRates.Initialization
+namespace RatesRevaluation.Initialization
 {
-    [FormAttribute("AirPortsCancelRevaluationExchangeRates.Initialization.Initialization", "Initialization/Initialization.b1f")]
+    [FormAttribute("RatesRevaluation.Initialization.Initialization", "Initialization/Initialization.b1f")]
     class Initialization : UserFormBase
     {
         public Initialization()

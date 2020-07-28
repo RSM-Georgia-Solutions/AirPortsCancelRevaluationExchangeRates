@@ -6,9 +6,9 @@ using SAPbouiCOM;
 using SAPbouiCOM.Framework;
 using Application = SAPbouiCOM.Framework.Application;
 
-namespace AirPortsCancelRevaluationExchangeRates
+namespace RatesRevaluation
 {
-    [FormAttribute("AirPortsCancelRevaluationExchangeRates.Form1", "Form1.b1f")]
+    [FormAttribute("RatesRevaluation.Form1", "Form1.b1f")]
     class Form1 : UserFormBase
     {
         public Form1()

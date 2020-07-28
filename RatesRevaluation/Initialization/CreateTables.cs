@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AirPortsCancelRevaluationExchangeRates.Initialization
+namespace RatesRevaluation.Initialization
 {
     class CreateTables : IRunnable
     {

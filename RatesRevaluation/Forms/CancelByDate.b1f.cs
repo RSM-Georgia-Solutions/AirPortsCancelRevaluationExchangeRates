@@ -9,9 +9,9 @@ using SAPbouiCOM;
 using SAPbouiCOM.Framework;
 using Application = SAPbouiCOM.Framework.Application;
 
-namespace AirPortsCancelRevaluationExchangeRates
+namespace RatesRevaluation
 {
-    [FormAttribute("AirPortsCancelRevaluationExchangeRates.CancelByDate", "Forms/CancelByDate.b1f")]
+    [FormAttribute("RatesRevaluation.CancelByDate", "Forms/CancelByDate.b1f")]
     class CancelByDate : UserFormBase
     {
         public CancelByDate()

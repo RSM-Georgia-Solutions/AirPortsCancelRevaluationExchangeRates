@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AddOnRegData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" SlientInstallation="No" SlientUpgrade="No" Partnernmsp="RSM" SchemaVersion="3.0" Type="" MultipleVersion="false" OnDemand="" OnPremise="" ExtName="RatesRevaluation" ExtVersion="1.01" Contdata="blatsabidze@rsm.ge" Partner="RSM" DBType="MSSQL" ClientType="A">
+  <Validity>
+    <SBOCompatibility>
+      <Version From="" To="" />
+    </SBOCompatibility>
+  </Validity>
+  <Configuration>
+    <Repository>
+      <Properties />
+    </Repository>
+    <Deployment>
+      <Properties />
+    </Deployment>
+    <Assignment>
+      <Properties />
+    </Assignment>
+  </Configuration>
+  <Addons>
+    <Addon Name="" Group="" ForceFlag="" Visible="" AutoAssign="" SelfUpgrd="">
+      <x86 AddonExe="C:\Users\blatsabidze\Desktop\Source\RatesRevaluation\RatesRevaluation\bin\Debug\RatesRevaluation.exe" AddonSig="">
+        <Installation>
+          <Files>
+            <File FileName="RatesRevaluation.exe">
+              <Actions />
+            </File>
+          </Files>
+        </Installation>
+        <Uninstallation>
+          <Files>
+            <File FileName="RatesRevaluation.exe">
+              <Actions />
+            </File>
+          </Files>
+        </Uninstallation>
+      </x86>
+      <x64 AddonExe="C:\Users\blatsabidze\Desktop\Source\RatesRevaluation\RatesRevaluation\bin\Debug\RatesRevaluation.exe" AddonSig="">
+        <Installation>
+          <Files>
+            <File FileName="AirPortsCancelRevaluationExchangeRates.b1s">
+              <Actions />
+            </File>
+            <File FileName="AirPortsCancelRevaluationExchangeRates.vshost.exe">
+              <Actions />
+            </File>
+            <File FileName="AirPortsCancelRevaluationExchangeRates.vshost.exe.manifest">
+              <Actions />
+            </File>
+            <File FileName="ConverterLib_x64.dll">
+              <Actions />
+            </File>
+            <File FileName="RatesRevaluation.b1s">
+              <Actions />
+            </File>
+            <File FileName="RatesRevaluation.exe">
+              <Actions />
+            </File>
+            <File FileName="RatesRevaluation.pdb">
+              <Actions />
+            </File>
+            <File FileName="RatesRevaluation.vshost.exe">
+              <Actions />
+            </File>
+            <File FileName="RatesRevaluation.vshost.exe.manifest">
+              <Actions />
+            </File>
+            <File FileName="SAPBusinessOneSDK.dll">
+              <Actions />
+            </File>
+            <File FileName="Media\logo.png">
+              <Actions />
+            </File>
+          </Files>
+        </Installation>
+        <Uninstallation>
+          <Files>
+            <File FileName="AirPortsCancelRevaluationExchangeRates.b1s">
+              <Actions />
+            </File>
+            <File FileName="AirPortsCancelRevaluationExchangeRates.vshost.exe">
+              <Actions />
+            </File>
+            <File FileName="AirPortsCancelRevaluationExchangeRates.vshost.exe.manifest">
+              <Actions />
+            </File>
+            <File FileName="ConverterLib_x64.dll">
+              <Actions />
+            </File>
+            <File FileName="RatesRevaluation.b1s">
+              <Actions />
+            </File>
+            <File FileName="RatesRevaluation.exe">
+              <Actions />
+            </File>
+            <File FileName="RatesRevaluation.pdb">
+              <Actions />
+            </File>
+            <File FileName="RatesRevaluation.vshost.exe">
+              <Actions />
+            </File>
+            <File FileName="RatesRevaluation.vshost.exe.manifest">
+              <Actions />
+            </File>
+            <File FileName="SAPBusinessOneSDK.dll">
+              <Actions />
+            </File>
+            <File FileName="Media\logo.png">
+              <Actions />
+            </File>
+          </Files>
+        </Uninstallation>
+      </x64>
+    </Addon>
+  </Addons>
+  <XApps>
+    <XApp Name="" Path="" FileName="" />
+  </XApps>
+  <UDQs>
+    <UDQ udqname="">
+      <Hana FileName="" />
+    </UDQ>
+  </UDQs>
+</AddOnRegData>

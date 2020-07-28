@@ -8,8 +8,8 @@
     <ProjectGuid>{B39C2A69-FB42-49FE-BCE6-1D882C0F1EAC}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>AirPortsCancelRevaluationExchangeRates</RootNamespace>
-    <AssemblyName>AirPortsCancelRevaluationExchangeRates</AssemblyName>
+    <RootNamespace>RatesRevaluation</RootNamespace>
+    <AssemblyName>RatesRevaluation</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -22,6 +22,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <Prefer32Bit>false</Prefer32Bit>
+    <PlatformTarget>x64</PlatformTarget>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -32,7 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>AirPortsCancelRevaluationExchangeRates.Program</StartupObject>
+    <StartupObject>RatesRevaluation.Program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="ConverterLib_x64">
@@ -88,6 +89,11 @@
     <None Include="Forms\Settings.b1f">
       <FormCategory>UserForm</FormCategory>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Media\logo.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
