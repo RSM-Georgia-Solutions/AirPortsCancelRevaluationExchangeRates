@@ -77,9 +77,8 @@ namespace RatesRevaluation
             string lossAcc= recSet2.Fields.Item("U_LossAccount").Value.ToString();
 
             Recordset recSet =(Recordset)DiManager.Company.GetBusinessObject(BoObjectTypes.BoRecordset);
-
             string query =
-                $@"select distinct JDT1.TransId  from JDT1 JOIN OJDT on JDT1.TransId = OJDT.TransId  where JDT1.TransId in (SELECT TransId FROM JDT1 WHERE RefDate IN(SELECT   MAX(RefDate) FROM     JDT1 GROUP BY MONTH(RefDate), YEAR(RefDate)) AND   (JDT1.TransId NOT IN ( SELECT T0.StornoToTr FROM OJDT T0 where t0.stornototr is not NULL) AND StornoToTr is null)  AND(Account = '{gainAcc}' OR Account = '{lossAcc}')  AND(ContraAct in (SELECT CardCode FROM OCRD where validfor = 'Y')) AND(RefDate >= '{DateTime.ParseExact(EditText0.Value, "yyyyMMdd", CultureInfo.InvariantCulture):s}' AND RefDate <= '{DateTime.ParseExact(EditText1.Value, "yyyyMMdd", CultureInfo.InvariantCulture):s}')) AND (Ref3Line  LIKE N'%RC%' OR Ref3Line LIKE N'%IN%'
+               $@"select distinct JDT1.TransId  from JDT1 JOIN OJDT on JDT1.TransId = OJDT.TransId  where JDT1.TransId in (SELECT TransId FROM JDT1 WHERE RefDate IN(SELECT   MAX(RefDate) FROM     JDT1 GROUP BY MONTH(RefDate), YEAR(RefDate)) AND   (JDT1.TransId NOT IN ( SELECT T0.StornoToTr FROM OJDT T0 where t0.stornototr is not NULL) AND StornoToTr is null)  AND(Account = '{gainAcc}' OR Account = '{lossAcc}')  AND(ContraAct in (SELECT CardCode FROM OCRD where validfor = 'Y')) AND(RefDate >= '{DateTime.ParseExact(EditText0.Value, "yyyyMMdd", CultureInfo.InvariantCulture):s}' AND RefDate <= '{DateTime.ParseExact(EditText1.Value, "yyyyMMdd", CultureInfo.InvariantCulture):s}')) AND (Ref3Line  LIKE N'%RC%' OR Ref3Line LIKE N'%IN%'
             OR Ref3Line LIKE N'%PU%'
             OR Ref3Line LIKE N'%PS%'
             OR Ref3Line LIKE N'%JE%'
@@ -98,11 +97,31 @@ namespace RatesRevaluation
             OR Ref3Line LIKE N'%КЗ%'
             OR Ref3Line LIKE N'%СЧ%'
             OR Ref3Line LIKE N'%НС%')";
+            //string query =
+            //    $@"select distinct JDT1.TransId  from JDT1 JOIN OJDT on JDT1.TransId = OJDT.TransId  where JDT1.TransId in (SELECT TransId FROM JDT1 WHERE RefDate IN(SELECT   MAX(RefDate) FROM     JDT1 GROUP BY MONTH(RefDate), YEAR(RefDate)) AND (Account = '{gainAcc}' OR Account = '{lossAcc}')  AND(ContraAct in (SELECT CardCode FROM OCRD where validfor = 'Y')) AND(RefDate >= '{DateTime.ParseExact(EditText0.Value, "yyyyMMdd", CultureInfo.InvariantCulture):s}' AND RefDate <= '{DateTime.ParseExact(EditText1.Value, "yyyyMMdd", CultureInfo.InvariantCulture):s}')) AND (Ref3Line  LIKE N'%RC%' OR Ref3Line LIKE N'%IN%'
+            //OR Ref3Line LIKE N'%PU%'
+            //OR Ref3Line LIKE N'%PS%'
+            //OR Ref3Line LIKE N'%JE%'
+            //OR Ref3Line LIKE N'%CN%'
+            //OR Ref3Line LIKE N'%CS%'
+            //OR Ref3Line LIKE N'%PC%'
+            //OR Ref3Line LIKE N'%DT%'
+            //OR Ref3Line LIKE N'%OB%'
+            //OR Ref3Line LIKE N'%ПР%'
+            //OR Ref3Line LIKE N'%ЗА%'
+            //OR Ref3Line LIKE N'%ИП%'
+            //OR Ref3Line LIKE N'%РС%'
+            //OR Ref3Line LIKE N'%БО%'
+            //OR Ref3Line LIKE N'%КП%'
+            //OR Ref3Line LIKE N'%КР%'
+            //OR Ref3Line LIKE N'%КЗ%'
+            //OR Ref3Line LIKE N'%СЧ%'
+            //OR Ref3Line LIKE N'%НС%')";
             recSet.DoQuery(DiManager.QueryHanaTransalte(query));
 
             int count = 0;
             int totalCont = recSet.RecordCount;
-
+            Recordset recSetForDocentry = (Recordset)DiManager.Company.GetBusinessObject(BoObjectTypes.BoRecordset);
             while (!recSet.EoF)
             {
                 int transId = int.Parse(recSet.Fields.Item("TransId").Value.ToString());
@@ -124,8 +143,10 @@ namespace RatesRevaluation
                     {
                         var x1 = coment.IndexOf("РС", StringComparison.Ordinal); 
 
-                        var docentry = coment.Substring(coment.IndexOf(x1 == -1 ? "RC" : "РС", StringComparison.Ordinal) + 3);
+                        var docNum = coment.Substring(coment.IndexOf(x1 == -1 ? "RC" : "РС", StringComparison.Ordinal) + 3);
                         Payments payment = (Payments)DiManager.Company.GetBusinessObject(BoObjectTypes.oIncomingPayments);
+                        recSetForDocentry.DoQuery($"SELECT DocEntry FROM ORCT WHERE DocNum = {docNum}");
+                        string docentry = recSetForDocentry.Fields.Item("DocEntry").Value.ToString();
                         payment.GetByKey(int.Parse(docentry));
 
                         for (int j = 0; j < payment.Invoices.Count; j++)
@@ -148,8 +169,10 @@ namespace RatesRevaluation
                         var x2 = coment.IndexOf("ИП", StringComparison.Ordinal);
                         var indexOf = coment.IndexOf(x1 == -1 ? "ИП" : "PS", StringComparison.Ordinal);
 
-                        var docentry = coment.Substring(indexOf + 3);
+                        var docNum = coment.Substring(indexOf + 3);
                         Payments payment = (Payments)DiManager.Company.GetBusinessObject(BoObjectTypes.oVendorPayments);
+                        recSetForDocentry.DoQuery($"SELECT DocEntry FROM OVPM WHERE DocNum = {docNum}");
+                        string docentry = recSetForDocentry.Fields.Item("DocEntry").Value.ToString();
                         payment.GetByKey(int.Parse(docentry));
                         for (int j = 0; j < payment.Invoices.Count; j++)
                         {
