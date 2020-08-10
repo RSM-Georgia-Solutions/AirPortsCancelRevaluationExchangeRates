@@ -18,3 +18,11 @@ C:\Users\nkurdadze\Desktop\AirPortsCancelRevaluationExchangeRates\RatesRevaluati
 C:\Users\nkurdadze\Desktop\AirPortsCancelRevaluationExchangeRates\RatesRevaluation\bin\Debug\SAPBusinessOneSDK.dll
 C:\Users\nkurdadze\Desktop\AirPortsCancelRevaluationExchangeRates\RatesRevaluation\obj\Debug\RatesRevaluation.csprojResolveAssemblyReference.cache
 C:\Users\nkurdadze\Desktop\AirPortsCancelRevaluationExchangeRates\RatesRevaluation\obj\Debug\RatesRevaluation.pdb
+D:\Users\nkurdadze\Documents\Visual Studio 2015\Projects\AirPortsCancelRevaluationExchangeRates\RatesRevaluation\obj\Debug\RatesRevaluation.exe
+D:\Users\nkurdadze\Documents\Visual Studio 2015\Projects\AirPortsCancelRevaluationExchangeRates\RatesRevaluation\bin\Debug\Media\logo.png
+D:\Users\nkurdadze\Documents\Visual Studio 2015\Projects\AirPortsCancelRevaluationExchangeRates\RatesRevaluation\bin\Debug\RatesRevaluation.exe
+D:\Users\nkurdadze\Documents\Visual Studio 2015\Projects\AirPortsCancelRevaluationExchangeRates\RatesRevaluation\bin\Debug\RatesRevaluation.pdb
+D:\Users\nkurdadze\Documents\Visual Studio 2015\Projects\AirPortsCancelRevaluationExchangeRates\RatesRevaluation\bin\Debug\ConverterLib_x64.dll
+D:\Users\nkurdadze\Documents\Visual Studio 2015\Projects\AirPortsCancelRevaluationExchangeRates\RatesRevaluation\bin\Debug\SAPBusinessOneSDK.dll
+D:\Users\nkurdadze\Documents\Visual Studio 2015\Projects\AirPortsCancelRevaluationExchangeRates\RatesRevaluation\obj\Debug\RatesRevaluation.csprojResolveAssemblyReference.cache
+D:\Users\nkurdadze\Documents\Visual Studio 2015\Projects\AirPortsCancelRevaluationExchangeRates\RatesRevaluation\obj\Debug\RatesRevaluation.pdb
